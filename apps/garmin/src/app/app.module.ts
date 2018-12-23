@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { ActivitiesModule } from '@sport/activities';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +13,8 @@ import { ActivitiesModule } from '@sport/activities';
     BrowserModule,
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
-    ActivitiesModule
+    ActivitiesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
