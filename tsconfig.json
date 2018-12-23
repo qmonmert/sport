@@ -16,6 +16,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@sport/activities": [
+        "libs/activities/src/index.ts"
+      ]
     }
   },
   "exclude": [

@@ -256,6 +256,34 @@
           }
         }
       }
+    },
+    "activities": {
+      "root": "libs/activities",
+      "sourceRoot": "libs/activities/src",
+      "projectType": "library",
+      "prefix": "sport",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/activities/tsconfig.lib.json",
+              "libs/activities/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/activities/jest.config.js",
+            "tsConfig": "libs/activities/tsconfig.spec.json",
+            "setupFile": "libs/activities/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {
