@@ -4,15 +4,24 @@
  **/
 
 import * as express from 'express';
+import { User } from '@sport/activities';
 
 const app = express();
 
+const user: User = {
+  id: 1,
+  firstname: 'Quentin',
+  lastname: 'Monmert',
+  city: 'Paris',
+  country: 'France'
+};
+
 app.get('/', (req, res) => {
-  res.send(`Welcome to backend!`);
+  res.json(user);
 });
 
 const port = 3333;
-app.listen(port, (err) => {
+app.listen(port, err => {
   if (err) {
     console.error(err);
   }
