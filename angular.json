@@ -125,6 +125,137 @@
           }
         }
       }
+    },
+    "garmin": {
+      "root": "apps/garmin/",
+      "sourceRoot": "apps/garmin/src",
+      "projectType": "application",
+      "prefix": "sport",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/garmin",
+            "index": "apps/garmin/src/index.html",
+            "main": "apps/garmin/src/main.ts",
+            "polyfills": "apps/garmin/src/polyfills.ts",
+            "tsConfig": "apps/garmin/tsconfig.app.json",
+            "assets": [
+              "apps/garmin/src/favicon.ico",
+              "apps/garmin/src/assets"
+            ],
+            "styles": [
+              "apps/garmin/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/garmin/src/environments/environment.ts",
+                  "with": "apps/garmin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "garmin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "garmin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "garmin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/garmin/src/test.ts",
+            "polyfills": "apps/garmin/src/polyfills.ts",
+            "tsConfig": "apps/garmin/tsconfig.spec.json",
+            "karmaConfig": "apps/garmin/karma.conf.js",
+            "styles": [
+              "apps/garmin/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/garmin/src/favicon.ico",
+              "apps/garmin/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/garmin/tsconfig.app.json",
+              "apps/garmin/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "garmin-e2e": {
+      "root": "apps/garmin-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/garmin-e2e/protractor.conf.js",
+            "devServerTarget": "garmin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "garmin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/garmin-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
