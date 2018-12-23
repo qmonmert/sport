@@ -7,5 +7,12 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "strava": {
+      "tags": []
+    },
+    "strava-e2e": {
+      "tags": []
+    }
+  }
 }

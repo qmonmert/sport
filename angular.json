@@ -2,7 +2,131 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "strava": {
+      "root": "apps/strava/",
+      "sourceRoot": "apps/strava/src",
+      "projectType": "application",
+      "prefix": "sport",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/strava",
+            "index": "apps/strava/src/index.html",
+            "main": "apps/strava/src/main.ts",
+            "polyfills": "apps/strava/src/polyfills.ts",
+            "tsConfig": "apps/strava/tsconfig.app.json",
+            "assets": [
+              "apps/strava/src/favicon.ico",
+              "apps/strava/src/assets"
+            ],
+            "styles": [
+              "apps/strava/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/strava/src/environments/environment.ts",
+                  "with": "apps/strava/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "strava:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "strava:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "strava:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/strava/tsconfig.app.json",
+              "apps/strava/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/strava/jest.config.js",
+            "tsConfig": "apps/strava/tsconfig.spec.json",
+            "setupFile": "apps/strava/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "strava-e2e": {
+      "root": "apps/strava-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/strava-e2e/cypress.json",
+            "tsConfig": "apps/strava-e2e/tsconfig.e2e.json",
+            "devServerTarget": "strava:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "strava:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/strava-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -10,5 +134,6 @@
     },
     "defaultCollection": "@nrwl/schematics",
     "packageManager": "yarn"
-  }
+  },
+  "defaultProject": "strava"
 }
