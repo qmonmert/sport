@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'strava';
+  title = 'STRAVA';
 
   user: Observable<User>;
 

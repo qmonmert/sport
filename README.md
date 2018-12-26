@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
+## Commands
+
+- yarn global add @nrwl/schematics
+- create-nx-workspace sport (ng new "sport" --collection=@nrwl/schematics)
+- cd sport
+- ng g app (strava)
+- ng g app (garmin)
+- ng serve strava
+- ng serve garmin --port 4201
+- ng g lib (activities)
+- ng g c user --project activities
+- ng g node-app (backend)
+- ng serve backend
+- yarn dep-graph
+- yarn affected:test --files=libs/activities/src/lib/activities.module.ts
+- yarn affected:test --files=apps/backend/src/main.ts
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
