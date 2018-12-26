@@ -19,6 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - yarn affected:test --files=libs/activities/src/lib/activities.module.ts
 - yarn affected:test --files=apps/backend/src/main.ts
 - ng g ngrx activities --module libs/activities/src/lib/activities.module.ts
+- ng g ngrx app --module apps/strava/src/app/app.module.ts
 
 ## Nrwl Extensions for Angular (Nx)
 
